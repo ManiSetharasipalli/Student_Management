@@ -1,101 +1,135 @@
+import Header from "@/components/Header";
 import Image from "next/image";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem
+} from "@/components/ui/select";
+
+import Button from "@/components/Button";
+import { 
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableHead
+} from "@/components/ui/table";
+
+import Stu1 from "@/public/stu1.png";
+import Stu2 from "@/public/stu2.png";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col md:mr-3 md:ml-5 w-full">
+      <Header />
+      <div className="flex flex-col bg-white mt-3 md:rounded-xl min-h-screen">
+        <div className="flex justify-between md:items-center mt-5 mx-1 md:mx-4 font-sans font-bold text-sm text-[#3F526E]">
+          <div className="flex flex-col md:flex-row gap-3">
+            <Select>
+              <SelectTrigger className="bg-gray-100 rounded-lg w-[148px] h-[38px] py-2 px-4">
+                <SelectValue placeholder="AY 2024-25"/>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="2024-25">AY 2024-25</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select>
+              <SelectTrigger className="bg-gray-100 rounded-lg w-[117px] h-[38px] py-2 px-4">
+                <SelectValue placeholder="CBSE 9"/>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="CBSE 9">CBSE 9</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <Button />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="mx-4 mt-10 overflow-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="text-black font-sans font-bold text-xs whitespace-nowrap">Student Name</TableHead>
+                <TableHead className="text-black font-sans font-bold text-xs whitespace-nowrap">Cohort</TableHead>
+                <TableHead className="text-black font-sans font-bold text-xs whitespace-nowrap">Courses</TableHead>
+                <TableHead className="text-black font-sans font-bold text-xs whitespace-nowrap">Date Joined</TableHead>
+                <TableHead className="text-black font-sans font-bold text-xs whitespace-nowrap">Last login</TableHead>
+                <TableHead className="text-black font-sans font-bold text-xs whitespace-nowrap">Status</TableHead>
+              </TableRow> 
+            </TableHeader>
+            <TableBody className="text-black font-sans font-medium text-xs h-20 whitespace-nowrap">
+              <TableRow>
+                <TableCell>John Doe</TableCell>
+                <TableCell>AY 2024-25</TableCell>
+                <TableCell>
+                <div className="flex flex-col md:flex-row gap-1">
+                    <div className="flex md:bg-[#F6F8FA] rounded-lg py-0.5 pl-1 pr-3 gap-1 items-center">
+                      <Image 
+                          src={Stu1}
+                          alt="student1" 
+                          width={300} 
+                          height={300}
+                          className="rounded-sm w-4 h-4 md:w-5 md:h-5"
+                       />
+                      <p>CBSE 9 Science</p>
+                    </div>
+                    <div className="flex md:bg-[#F6F8FA] rounded-lg py-0.5 pl-1 pr-3 gap-1 items-center">
+                    <Image 
+                          src={Stu2} 
+                          alt="student2"
+                          width={300} 
+                          height={300}
+                          className="rounded-sm w-4 h-4 md:w-5 md:h-5"
+                       />
+                      <p>CBSE 9 Math</p>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell>17. Nov. 2024</TableCell>
+                <TableCell>17. Nov. 2024 4:16 PM</TableCell>
+                <TableCell>
+                  <div className="bg-[#4AEA40] rounded-full w-4 h-4 ml-2"></div>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>John Doe</TableCell>
+                <TableCell>AY 2024-25</TableCell>
+                <TableCell>
+                  <div className="flex flex-col md:flex-row gap-1">
+                    <div className="flex md:bg-[#F6F8FA] rounded-lg py-0.5 pl-1 pr-3 gap-1 items-center">
+                      <Image 
+                          src={Stu1} 
+                          alt="student1" 
+                          width={300} 
+                          height={300}
+                          className="rounded-sm w-4 h-4 md:w-5 md:h-5"
+                       />
+                      <p>CBSE 9 Science</p>
+                    </div>
+                    <div className="flex md:bg-[#F6F8FA] rounded-lg py-0.5 pl-1 pr-3 gap-1 items-center">
+                    <Image 
+                          src={Stu2} 
+                          alt="student2" 
+                          width={300} 
+                          height={300}
+                          className="rounded-sm  w-4 h-4 md:w-5 md:h-5"
+                       />
+                      <p>CBSE 9 Math</p>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell>17. Nov. 2024</TableCell>
+                <TableCell>17. Nov. 2024 4:16 PM</TableCell>
+                <TableCell>
+                  <div className="bg-[#EA4E40] rounded-full w-4 h-4 ml-2"></div>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table> 
+        </div>
+      </div>
     </div>
   );
 }
