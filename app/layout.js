@@ -1,6 +1,6 @@
 import "./globals.css";
 import ReduxProvider from "./reduxProvider"
-import Sidebar from "@/components/Sidebar";
+import Sidebar from "../components/SideBar";
 
 export const metadata = {
   title: "Student Management",
