@@ -1,7 +1,7 @@
 import "./globals.css";
 import ReduxProvider from "./reduxProvider"
 import Sidebar from "../components/SideBar";
-import Logo from '../public/Logo.png'
+import Logo from '../public/logo.png';
 
 export const metadata = {
   title: "Student Management",
