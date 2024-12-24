@@ -62,7 +62,7 @@ export default function AddStudentForm() {
       <div onClick={() => setIsDialogOpen(true)}>
         <Button Icon={PlusIcon} text="Add New Student" />
       </div>
-      <DialogContent side="right" className="p-6">
+      <DialogContent side="right" className="w-[350px] sm:w-[500px] rounded-lg">
         <DialogTitle className="text-xl font-bold mb-4">
           Add Student
         </DialogTitle>
