@@ -1,6 +1,7 @@
 import "./globals.css";
 import ReduxProvider from "./reduxProvider"
 import Sidebar from "../components/SideBar";
+import Logo from '../public/Logo.png'
 
 export const metadata = {
   title: "Student Management",
@@ -11,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="flex">
-        <Sidebar Logo="/favicon.ico" />
+        <Sidebar Logo={Logo} />
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
