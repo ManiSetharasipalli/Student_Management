@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Student Management System
+
+A modern web application for managing student data, built with React, Next.js, and Supabase, featuring a polished UI with shadcn/ui components.
+
+## Overview
+
+This Student Management System provides an intuitive interface for managing student information, with features like filtering, searching, and responsive design across all devices. The application is built using a Figma design as a reference, ensuring a polished and professional user interface.
+
+## Tech Stack
+
+- **Frontend**
+  - React.js
+  - Next.js
+  - TailwindCSS
+  - Redux (State Management)
+  - shadcn/ui (UI Component Library)
+  - Heroicons
+
+- **Backend**
+  - Next.js API Routes
+  - Prisma (ORM)
+  - Supabase (Database)
+
+## Features
+
+- Responsive design that works across all screen sizes
+- Comprehensive student management functionality
+- Add new students through a user-friendly form
+- Advanced filtering options:
+  - Filter by cohort
+  - Filter by courses
+- Search functionality
+- Interactive data tables
+- Sidebar navigation
+- Header with quick actions
+
+## Components
+
+The application is built with several key components:
+
+- Sidebar Navigation
+- Header
+- Student Table
+- Add Student Form
+- Filter Controls
+- Search Bar
+- Select Buttons
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js installed on your system
+- A Supabase account
+- Git
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ManiSetharasipalli/Student_Management.git
+cd student-management
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. Configure environment variables:
+   - Edit a `.env` file in the root directory
+   - Add the following URLS:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+DATABASE_URL="your-supabase-transaction-url"
+DIRECT_URL="your-supabase-session-url"
+```
 
-## Learn More
+4. Set up Supabase:
+   - Create a new project in Supabase
+   - Copy the Transaction URL and add it as `DATABASE_URL`
+   - Copy the Session URL and add it as `DIRECT_URL`
 
-To learn more about Next.js, take a look at the following resources:
+5. Start the development server:
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application should now be running at `http://localhost:3000`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Connection Pool Setup
 
-## Deploy on Vercel
+To ensure proper database connectivity:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Go to your Supabase project dashboard
+2. Navigate to Database settings
+3. Copy the Transaction URL for the `DATABASE_URL`
+4. Copy the Session URL for the `DIRECT_URL`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Acknowledgments
+
+- shadcn/ui for the beautiful components
+- Supabase team for the excellent database service
+- Next.js team for the amazing framework
+
+
+
+
