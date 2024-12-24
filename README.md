@@ -81,6 +81,11 @@ DIRECT_URL="your-supabase-session-url"
    - Copy the Transaction URL and add it as `DATABASE_URL`
    - Copy the Session URL and add it as `DIRECT_URL`
 
+5. Run Database Migrations:
+```bash
+   npx prisma migrate dev
+```
+
 5. Start the development server:
 ```bash
 npm run dev
