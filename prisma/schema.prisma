@@ -1,8 +1,24 @@
+// Prisma Client configuration
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // Supabase Project DataBase Url (Transaction pooler)
+  directUrl = env("DIRECT_URL") // Supabase Project Direct Url (Session pooler)
 }
+
+// Students ORM Model
+
+model Students {
+  id           Int      @id @unique @default(autoincrement())
+  student_name String  
+  cohort       String
+  courses      String[]
+  date_joined  DateTime  @db.Date
+  last_login   DateTime? @db.Timestamp(6)  
+  status       Boolean
+}
+

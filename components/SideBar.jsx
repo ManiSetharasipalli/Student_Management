@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from 'next/navigation';
 import {
   ClockIcon,
   BookOpenIcon,
@@ -13,25 +15,41 @@ import {
 } from "@heroicons/react/24/outline";
 import SidebarItems from "@/components/SidebarItems";
 
+
 export default function ResponsiveSidebar({ Logo }) {
+  // State to control the visibility of the sidebar
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+  // Get the current pathname for active link styling
+  const pathname = usePathname();
+
+  // List of menu items with their respective path, icon, and label
+  const menuItems = [
+    { path: '/dashboard', Icon: ClockIcon, label: 'Dashboard' },
+    { path: '/students', Icon: BookOpenIcon, label: 'Students' },
+    { path: '/chapter', Icon: NewspaperIcon, label: 'Chapter' },
+    { path: '/help', Icon: QuestionMarkCircleIcon, label: 'Help' },
+    { path: '/reports', Icon: ChartPieIcon, label: 'Reports' },
+    { path: '/settings', Icon: Cog6ToothIcon, label: 'Settings' },
+  ];
 
   return (
     <>
-      {/* Mobile Toggle Button - Only visible on mobile */}
+      {/* Button for toggling the sidebar on mobile */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         className="fixed top-6 left-1 z-50 p-2 rounded-md lg:hidden"
         aria-label="Toggle Sidebar"
       >
+        {/* Display the menu icon when the sidebar is closed */}
         {isSidebarOpen ? (
-          <p className='hidden'/>
+          <p className="hidden"/> 
         ) : (
           <Bars3Icon className="w-6 h-6" />
         )}
       </button>
-
-      {/* Sidebar */}
+      
+      {/* Sidebar container */}
       <div className={`
         flex flex-col fixed lg:relative bg-white py-8 px-3 w-[248px] gap-[30px] min-h-screen
         transition-transform duration-300 ease-in-out
@@ -39,6 +57,7 @@ export default function ResponsiveSidebar({ Logo }) {
         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         z-40
       `}>
+        {/* Logo section */}
         <Image
           src={Logo}
           alt="Logo"
@@ -46,20 +65,26 @@ export default function ResponsiveSidebar({ Logo }) {
           height={300}
           className="w-[98px] h-12"
         />
+        
+        {/* Sidebar menu items */}
         <div className="flex flex-col gap-2.5">
-          <SidebarItems Icon={ClockIcon} Item="Dashboard" />
-          <SidebarItems Icon={BookOpenIcon} Item="Students" />
-          <SidebarItems Icon={NewspaperIcon} Item="Chapter" />
-          <SidebarItems Icon={QuestionMarkCircleIcon} Item="Help" />
-          <SidebarItems Icon={ChartPieIcon} Item="Reports" />
-          <SidebarItems Icon={Cog6ToothIcon} Item="Settings" />
+          {menuItems.map((item) => (
+            <Link href={item.path} key={item.path}>
+              <SidebarItems 
+                Icon={item.Icon} 
+                Item={item.label}
+                isActive={pathname === item.path}
+              />
+            </Link>
+          ))}
         </div>
       </div>
-
+      
+      {/* Overlay when sidebar is open on mobile and tab screen sizes */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
-          onClick={() => setIsSidebarOpen(false)}
+          onClick={() => setIsSidebarOpen(false)} // Close sidebar when overlay is clicked
         />
       )}
     </>

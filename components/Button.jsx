@@ -1,12 +1,15 @@
-import { PlusIcon } from "@heroicons/react/24/outline";
+// Button component for rendering a button with an icon and text.
 
-function Button(){
-    return (
-        <div className="flex gap-3 bg-gray-100 rounded-lg w-[197px] h-[36px] py-2 px-4 cursor-pointer">
-            <PlusIcon className="h-5 w-5 text-gray-500"/>
-            <p>Add New Student</p>
-        </div>
-    )
-}
+import React from 'react'
 
-export default Button;
+export default function Button({Icon, text, type="button"}) {
+  return (
+    <button 
+        type = {type}
+        className="flex gap-3 bg-gray-100  items-center font-sans font-bold text-sm rounded-lg w-[197px] h-[36px] p-4 cursor-pointer
+                  hover:bg-gray-300">
+        <Icon className="w-5 h-5 text-[#3F526E]"/>
+        <p>{text}</p>
+    </button>
+  );
+};
