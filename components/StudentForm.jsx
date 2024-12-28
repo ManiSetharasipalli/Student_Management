@@ -12,6 +12,7 @@ import {
   DialogContent, 
   DialogTitle
 } from "./ui/dialog";
+import { toast } from "sonner";
 
 const COHORTS = ["AY 2024-25", "AY 2023-24", "AY 2022-23"];
 
@@ -54,6 +55,7 @@ export default function AddStudentForm() {
     e.preventDefault();
     dispatch(addStudent(formData));
     setIsDialogOpen(false);
+    toast(`Student '${formData.name}' created successfully!`);
     setFormData(INITIAL_FORM_STATE);
   };
 

@@ -2,6 +2,7 @@ import "./globals.css";
 import ReduxProvider from "./reduxProvider"
 import Sidebar from "../components/SideBar";
 import Logo from '../public/logo.png';
+import { Toaster } from "sonner";
 
 export const metadata = {
   title: "Student Management",
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="flex">
         <Sidebar Logo={Logo} />
+        <Toaster position="top-right" richColors />
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
